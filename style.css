@@ -8,8 +8,8 @@
 }
 body {
   font-family: var(--noto);
-  width: 100vw;
-  background-color: #ccc;
+  width: 100%;
+  background-color: #ffffff;
 }
 a {
   text-decoration: none;
@@ -23,21 +23,24 @@ ul {
 }
 header {
   background-color: #404eed;
-  background-image: url("./assets/background1.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  position:relative ;
-  min-height: 90vh;
+  position: relative;
+  min-height: 626px;
+  display: flex;
+  flex-direction: column;
+  z-index: 0;
 }
 /* ─── Navbar ─────────────────────────────────────────────────────────── ✣ ─ */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   max-width: 1260px;
   margin-inline: auto;
   color: white;
   padding: 1rem 2rem;
+  z-index: 999999;
+  flex-grow: 0;
 }
 .menuItems {
   display: flex;
@@ -61,38 +64,130 @@ nav {
   font-size: 1.5rem;
   display: none;
 }
-.download{
+.download {
   display: none;
 }
-.bg2{
-  position: absolute;
-  left: -14%;
-  bottom: 0;
+
+/* ─── Hero ───────────────────────────────────────────────────────────── ✣ ─ */
+.heroContainer {
+  max-width: 1260px;
+  width: min(1260px, 54%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-inline: auto;
+  margin-top: 7rem;
+  margin-bottom: 5rem;
+  flex: 1;
+  color: #fff;
+  text-align: center;
+  z-index: 999;
 }
-.bg3{
-  position: absolute;
-  right: -14%;
-  bottom: 0;
+.headline {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 64px;
+  margin-bottom: 2rem;
+  line-height: 95%;
+  text-rendering: geometricPrecision;
 }
+.heroText {
+  font-size: clamp(14px, 2vw, 18px);
+  line-height: 1.625;
+  margin-block: 0.5rem;
+}
+.heroButtons {
+  display: flex;
+  padding: 2rem 0;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+.heroDownload,
+.openDiscord {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 2rem; */
+  width: 320px;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  font-size: 18px;
+  cursor: pointer;
+}
+.heroDownload {
+  color: #414141;
+  background-color: #ffffff;
+}
+.openDiscord {
+  color: #ffffff;
+  background-color: #1c1c1c;
+}
+.heroDownload:hover {
+  color: #404eed;
+  background-color: #ffffff;
+  box-shadow: 3px 2px 5px #47474791;
+}
+.openDiscord:hover {
+  color: #ffffff;
+  background-color: #4f4f4f;
+  box-shadow: 3px 2px 5px #47474791;
+}
+.bgImages {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: clip;
+}
+.bg1 {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1260px;
+
+  overflow: clip;
+  z-index: -5;
+}
+.bg2 {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1030px;
+  overflow: clip;
+  z-index: -4;
+}
+.bg3 {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  margin-left: 350px;
+  overflow: clip;
+}
+
 @media (max-width: 1024px) {
-  nav{
+  nav {
     justify-content: end;
     align-items: flex-start;
     gap: 2rem;
   }
-  nav>.logo{
+  nav > .logo {
     flex: 1;
     justify-self: start;
   }
-  .menuBars{
+  .menuBars {
     display: block;
     order: 2;
-
   }
-  .menuItems{
+  .menuItems {
     display: none;
   }
-  .menuBars:hover ~ .menuItems, .menuItems:hover{
+  .menuBars:hover ~ .menuItems,
+  .menuItems:hover {
     display: flex;
     order: 3;
     flex-direction: column;
@@ -114,12 +209,12 @@ nav {
     width: 100%;
     padding-bottom: 1rem;
   }
-  .menuItems>li:hover{
-  background-color: #f1efef;
-  width: 100%;
-  border-radius: 1rem;
+  .menuItems > li:hover {
+    background-color: #f1efef;
+    width: 100%;
+    border-radius: 1rem;
   }
-  .download{
+  .download {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -134,5 +229,154 @@ nav {
     position: absolute;
     bottom: 2rem;
     align-self: center;
+  }
+  .heroContainer {
+    margin-inline: 2rem;
+    text-align: left;
+    align-items: flex-start;
+  }
+  .heroButtons {
+    justify-content: start;
+  }
+  .bg2 {
+    display: none;
+  }
+  .bg3 {
+    margin-left: -50px;
+  }
+}
+@media (max-width: 768px) {
+  .bg1 {
+    display: none;
+  }
+  .bg3 {
+    display: none;
+  }
+  .bgImages {
+    position: relative;
+    overflow: clip;
+  }
+  .bg2 {
+    display: block;
+    width: 100%;
+    margin: auto;
+    max-width: 880px;
+    position: static;
+    left: 50%;
+    margin-left: -10%;
+    z-index: 1;
+    overflow: clip;
+  }
+  .headline {
+    font-size: 44px;
+  }
+  .heroContainer {
+    margin-top: 3rem;
+    width: 95%;
+    margin-inline: auto;
+    text-align: left;
+    box-sizing: border-box;
+    /* padding: 1rem; */
+    /* background-color: red; */
+  }
+}
+@media (max-width: 375px) {
+  .heroDownload,
+  .openDiscord {
+    font-size: 15px;
+    width: 99%;
+  }
+}
+
+/* ─── Mainmain ───────────────────────────────────────────────────────── ✣ ─ */
+
+.feature {
+  max-width: 1260px;
+  padding-block: 120px;
+  padding-inline: 30px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+  margin: auto;
+}
+.dark {
+  background-color: #f6f6f6;
+}
+.featureImg {
+  grid-column: 1/ 8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.featureImg-d {
+  grid-column: 5/ 13;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.featureImg > img,
+.featureImg-d > img {
+  width: 100%;
+}
+.featureText,
+.featureText-d {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  color: #313131;
+}
+.featureText-d {
+  grid-column: 1/5;
+}
+.featureText {
+  grid-column: 9/ 13;
+}
+.featureText > h1,
+.featureText-d > h1 {
+  font-size: 42px;
+}
+.featureText > p,
+.featureText-d > p {
+  font-size: clamp(15px, 2vw, 18px);
+  line-height: 1.625;
+}
+@media (max-width: 1024px) {
+  .feature {
+    grid-template-columns: repeat(8, 1fr);
+    padding-block: 80px;
+  }
+  .featureImg {
+    grid-column: 1/5;
+  }
+  .featureImg-d {
+    grid-column: 5/9;
+  }
+  .featureText {
+    grid-column: 5/9;
+  }
+  .featureText-d {
+    grid-column: 1/5;
+  }
+}
+@media (max-width: 768px) {
+  .feature{
+    grid-template-columns: repeat(4, 1fr);
+    padding-block: 56px;
+  }
+  .featureText {
+    grid-row: 2/3;
+    grid-column: 1/5;
+    text-align: center;
+  }
+  .featureText-d {
+    grid-row: 2/3;
+    grid-column: 1/5;
+    text-align: center;
+  }
+  .featureText > h1,
+  .featureText-d > h1 {
+    font-size: clamp(20px, 4vw, 40px);
   }
 }
